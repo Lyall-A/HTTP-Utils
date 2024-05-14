@@ -11,12 +11,12 @@ module.exports = class {
     
         this.listen = (...args) => this.server.listen(...args);
     
-        this.use = (...args) => this.router.use(parseServerObj(...args));
-        this.get = (...args) => this.router.get(parseServerObj(...args));
-        this.head = (...args) => this.router.head(parseServerObj(...args));
-        this.post = (...args) => this.router.post(parseServerObj(...args));
-        this.put = (...args) => this.router.put(parseServerObj(...args));
-        this.delete = (...args) => this.router.delete(parseServerObj(...args));
+        this.use = (...args) => this.router.use(...parseServerObj(...args));
+        this.get = (...args) => this.router.get(...parseServerObj(...args));
+        this.head = (...args) => this.router.head(...parseServerObj(...args));
+        this.post = (...args) => this.router.post(...parseServerObj(...args));
+        this.put = (...args) => this.router.put(...parseServerObj(...args));
+        this.delete = (...args) => this.router.delete(...parseServerObj(...args));
     }
 }
 
