@@ -11,6 +11,7 @@ module.exports = class {
     
         this.listen = (...args) => this.server.listen(...args);
     
+        this.use = (...args) => this.router.use(parseServerObj(...args));
         this.get = (...args) => this.router.get(parseServerObj(...args));
         this.head = (...args) => this.router.head(parseServerObj(...args));
         this.post = (...args) => this.router.post(parseServerObj(...args));
@@ -19,7 +20,11 @@ module.exports = class {
     }
 }
 
-function parseServerObj(req, res) {
+function parseServerObj(req, res, ...args) {
     const newReq = { _raw: req };
     const newRes = { _raw: res };
+
+    // TODO
+
+    return [req, res, ...args];
 }
