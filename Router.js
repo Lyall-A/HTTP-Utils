@@ -57,8 +57,8 @@ module.exports = class {
 
         this[lowerCase || "use"] = (path, callback) => {
             if (typeof path == "function" && !callback) {
-                path = callback;
-                callback = undefined;
+                callback = path;
+                path = undefined;
             }
 
             this.listeners.push({
