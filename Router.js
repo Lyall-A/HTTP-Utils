@@ -24,8 +24,8 @@ module.exports = class {
                 return false; // If no listener path but path
             }
 
-            if (listenerPath.length < path.length && !(listener.path.endsWith("/*") || listener.path == "*")) return false; // If listener path does not match path length and listener path does not end with *
-            if (listenerPath.length > path.length) return false; // If listener path length is more than path length
+            if (listenerPath.length < path.length && !(listener.path.endsWith("/*") || listenerPath.join() == "*")) return false; // If listener path does not match path length and listener path does not end with *
+            if (listenerPath.length > path.length && listenerPath.join() != "*") return false; // If listener path length is more than path length
             
             // For each listener path
             let match = true;
@@ -57,8 +57,8 @@ module.exports = class {
 
         this[lowerCase || "use"] = (path, callback) => {
             if (typeof path == "function" && !callback) {
-                path = callback;
-                callback = undefined;
+                callback = path;
+                path = undefined;
             }
 
             this.listeners.push({
